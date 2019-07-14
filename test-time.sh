@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 if test $(date +%S) -eq "30";then 
 	echo "matched it"
