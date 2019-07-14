@@ -4,7 +4,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				retry(60) {
-					sh 'if test $(date +%S) -eq "30";then echo "matched it"; fi'
+					sh './test-time.sh'
 				}
 				timeout(time: 1, unit: 'MINUTES') {
 					sh 'echo FAILed'
