@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'dtzar/helm-kubectl' }
+    }
     stages {
         stage('Deploy') {
             steps {
