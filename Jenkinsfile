@@ -3,9 +3,9 @@ pipeline {
         docker { image 'python:3.7-alpine' }
     }
     stages {
-        stage('Test') {
+        stage('Deploy') {
             steps {
-                sh 'python -V'
+                sh 'helm install --name testapp --namespace temp /home/ifot/birthdayapp/birthdayapp/helm/birthdayapp'
             }
         }
     }
