@@ -1,5 +1,6 @@
-import jenkins.model.*
-jenkins = Jenkins.instance
+#!/usr/bin/env groovy
+// import jenkins.model.*
+// jenkins = Jenkins.instance
 
 podTemplate(label: label, containers: [
   containerTemplate(name: 'python', image: 'python:3.7.4-alpine', command: 'cat', ttyEnabled: true),
@@ -32,14 +33,19 @@ volumes: [
         }
       }
     }
-    stage('Run kubectl') {
-      container('kubectl') {
-        sh "kubectl get pods"
-      }
-    }
-    stage('Run helm') {
+    stage('Test helm') {
       container('helm') {
         sh "helm list"
+      }
+    }
+    stage('Install Redis') {
+      container('helm') {
+        sh "helm install --name redis --namespace bday stable/redis "
+      }
+    }
+    stage('Deploy application') {
+      container('helm') {
+        sh "helm install --name birthdayapp --namespace bday "
       }
     }
   }
