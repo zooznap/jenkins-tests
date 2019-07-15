@@ -1,0 +1,15 @@
+pipeline {
+	agent any 
+	stages {
+		stage('Build') {
+			steps {
+				timeout(time: 1, unit: 'MINUTES') {
+					retry(60) {
+						sh './test-time.sh'
+					}
+				}
+				
+			}
+		}
+	}
+}
