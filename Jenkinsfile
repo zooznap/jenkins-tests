@@ -1,6 +1,4 @@
 #!/usr/bin/env groovy
-// import jenkins.model.*
-// jenkins = Jenkins.instance
 
 podTemplate(label: label, containers: [
   containerTemplate(name: 'python', image: 'python:3.7.4-alpine', command: 'cat', ttyEnabled: true),
