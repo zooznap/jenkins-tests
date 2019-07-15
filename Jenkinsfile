@@ -4,7 +4,7 @@ jenkins = Jenkins.instance
 podTemplate(label: label, containers: [
   containerTemplate(name: 'python', image: 'python:3.7.4-alpine', command: 'cat', ttyEnabled: true),
   containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
-  containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.12.10', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.12.1', command: 'cat', ttyEnabled: true),
   containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
 ],
 volumes: [
